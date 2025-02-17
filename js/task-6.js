@@ -12,12 +12,6 @@ const boxesContainer = document.querySelector("#boxes");
 
 // Function to create a collection of div elements
 function createBoxes(amount) {
-  // Clear existing elements before creating new ones
-  destroyBoxes();
-
-  // Validate the input value (should be between 1 and 100)
-  if (amount < 1 || amount > 100) return;
-
   const elements = [];
   let size = 30; // Initial box size
 
@@ -44,8 +38,18 @@ function destroyBoxes() {
 // Event listener for the create button
 createBtn.addEventListener("click", () => {
   const amount = parseInt(inputEl.value.trim(), 10);
+  
+  // Validate the input value (should be between 1 and 100)
+  if (amount < 1 || amount > 100) return;
+
+  // Clear existing elements before creating new ones
+  destroyBoxes();
+  
+  // Create given amount of boxes
   createBoxes(amount);
-  inputEl.value = ""; // Clear input after rendering
+  
+  // Clear input after rendering
+  inputEl.value = ""; 
 });
 
 // Event listener for the destroy button
